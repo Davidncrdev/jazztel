@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tarifas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .option-group {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #ffffff;
+        }
+        .option-group h2 {
+            border-bottom: 2px solid #fbbf24;
+            padding-bottom: 0.5rem;
+        }
+        .option-group label {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        .option-group input[type="radio"],
+        .option-group input[type="checkbox"] {
+            accent-color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-yellow-900 text-white py-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Jazztel</h1>
+            <nav>
+                <!-- You can add navigation links here if needed -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto p-8 bg-yellow-50 rounded-lg shadow-2xl max-w-4xl mt-6 mb-4">
+        <h1 class="text-3xl font-bold text-center mb-8 text-yellow-900">Calculadora de Tarifas</h1>
+
+        <div class="option-group mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-yellow-800">Stand Alone</h2>
+            <label class="flex items-center text-yellow-700">
+                <input type="radio" name="standalone" value="28.95" class="mr-3"/> Fibra 300 (€28.95)
+            </label>
+            <label class="flex items-center text-yellow-700">
+                <input type="radio" name="standalone" value="29.95" class="mr-3"/> Fibra 600 (€29.95)
+            </label>
+            <label class="flex items-center text-yellow-700">
+                <input type="radio" name="standalone" value="30.95" class="mr-3"/> Fibra 1000 (€30.95)
+            </label>
+        </div>
+
+        <div class="option-group mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-yellow-800">Paquete</h2>
+
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-2 text-yellow-700">Pack One</h3>
+                <label class="flex items-center text-yellow-700 mb-2">
+                    <input type="radio" name="package" value="43.95" class="mr-3"/> Fibra 600 + 1 línea 60GB (€43.95)
+                </label>
+                <label class="flex items-center text-yellow-700 mb-2">
+                    <input type="radio" name="package" value="51.95" class="mr-3"/> Fibra 1000 + 1 línea 60GB + router (€51.95)
+                </label>
+                <label class="flex items-center text-yellow-700 mb-2">
+                    <input type="radio" name="package" value="49.95" class="mr-3"/> Fibra 600 + 1 línea llamadas y gigas ilimitadas (€49.95)
+                </label>
+                <label class="flex items-center text-yellow-700">
+                    <input type="radio" name="package" value="57.95" class="mr-3"/> Fibra 1000 + 1 línea llamadas y gigas ilimitadas + router (€57.95)
+                </label>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold mb-2 text-yellow-700">Pack Duo</h3>
+                <label class="flex items-center text-yellow-700 mb-2">
+                    <input type="radio" name="package" value="43.95" class="mr-3"/> Fibra 600 + 2 líneas 50GB (€43.95)
+                </label>
+                <label class="flex items-center text-yellow-700 mb-2">
+                    <input type="radio" name="package" value="51.95" class="mr-3"/> Fibra 1000 + 2 líneas 50GB + router (€51.95)
+                </label>
+                <label class="flex items-center text-yellow-700 mb-2">
+                    <input type="radio" name="package" value="59.95" class="mr-3"/> Fibra 600 + 2 líneas llamadas y gigas ilimitadas + Jazztel TV (€59.95)
+                </label>
+                <label class="flex items-center text-yellow-700">
+                    <input type="radio" name="package" value="67.95" class="mr-3"/> Fibra 1000 + 2 líneas llamadas y gigas ilimitadas + router + Jazztel TV (€67.95)
+                </label>
+            </div>
+        </div>
+
+        <div class="option-group mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-yellow-800">Líneas Adicionales</h2>
+            <div class="flex items-center mb-4">
+                <label class="block flex-grow text-yellow-700">Línea 60GB (€12)</label>
+                <div class="flex items-center">
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-l" onclick="increment('linea60')">+</button>
+                    <input type="number" id="linea60" class="w-16 text-center border-t border-b border-yellow-300" value="0" readonly>
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-r" onclick="decrement('linea60')">-</button>
+                </div>
+            </div>
+            <div class="flex items-center mb-4">
+                <label class="block flex-grow text-yellow-700">Línea 30GB llamadas ilimitadas (€12)</label>
+                <div class="flex items-center">
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-l" onclick="increment('linea30')">+</button>
+                    <input type="number" id="linea30" class="w-16 text-center border-t border-b border-yellow-300" value="0" readonly>
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-r" onclick="decrement('linea30')">-</button>
+                </div>
+            </div>
+            <div class="flex items-center mb-4">
+                <label class="block flex-grow text-yellow-700">Línea ilimitada (€10)</label>
+                <div class="flex items-center">
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-l" onclick="increment('lineaIlimitada')">+</button>
+                    <input type="number" id="lineaIlimitada" class="w-16 text-center border-t border-b border-yellow-300" value="0" readonly>
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-r" onclick="decrement('lineaIlimitada')">-</button>
+                </div>
+            </div>
+            <div class="flex items-center mb-4">
+                <label class="block flex-grow text-yellow-700">Línea 25GB (€8)</label>
+                <div class="flex items-center">
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-l" onclick="increment('linea25')">+</button>
+                    <input type="number" id="linea25" class="w-16 text-center border-t border-b border-yellow-300" value="0" readonly>
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-r" onclick="decrement('linea25')">-</button>
+                </div>
+            </div>
+            <div class="flex items-center mb-4">
+                <label class="block flex-grow text-yellow-700">Línea 12GB llamadas ilimitadas (€8)</label>
+                <div class="flex items-center">
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-l" onclick="increment('linea12')">+</button>
+                    <input type="number" id="linea12" class="w-16 text-center border-t border-b border-yellow-300" value="0" readonly>
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-r" onclick="decrement('linea12')">-</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-group mb-8">
+            <h2 class="text-xl font-semibold mb-4 text-yellow-800">Jazztel TV</h2>
+            <label class="flex items-center text-yellow-700">
+                <input type="checkbox" id="jazztelTV" value="4.95" class="mr-3"/> Añadir Jazztel TV (€4.95)
+            </label>
+        </div>
+
+        <div class="text-center mb-6">
+            <button onclick="calcularTotal()" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Calcular Total</button>
+        </div>
+
+        <div class="result text-center text-2xl font-bold text-yellow-900" id="resultado">
+            Total: €0
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-yellow-900 text-white py-4 mt-auto">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">&copy; 2024 Todos los derechos reservados.</p>
+            <a href="https://www.instagram.com/_davidncr" class="text-yellow-300 hover:text-yellow-500" target="_blank">Fyve Studio.pro David Kabre.</a>
+        </div>
+    </footer>
+
+    <script>
+        function calcularTotal() {
+            let total = 0;
+
+            const standalone = document.querySelector('input[name="standalone"]:checked');
+            if (standalone) {
+                total += parseFloat(standalone.value);
+            }
+
+            const package = document.querySelector('input[name="package"]:checked');
+            if (package) {
+                total += parseFloat(package.value);
+            }
+
+            const linea60 = parseInt(document.getElementById('linea60').value) || 0;
+            total += linea60 * 12;
+
+            const linea30 = parseInt(document.getElementById('linea30').value) || 0;
+            total += linea30 * 12;
+
+            const lineaIlimitada = parseInt(document.getElementById('lineaIlimitada').value) || 0;
+            total += lineaIlimitada * 10;
+
+            const linea25 = parseInt(document.getElementById('linea25').value) || 0;
+            total += linea25 * 8;
+
+            const linea12 = parseInt(document.getElementById('linea12').value) || 0;
+            total += linea12 * 8;
+
+            const jazztelTV = document.getElementById('jazztelTV');
+            if (jazztelTV.checked) {
+                total += parseFloat(jazztelTV.value);
+            }
+
+            document.getElementById('resultado').textContent = `Total: €${total.toFixed(2)}`;
+        }
+
+        function increment(id) {
+            const input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decrement(id) {
+            const input = document.getElementById(id);
+            if (parseInt(input.value) > 0) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+    </script>
+</body>
+</html>
